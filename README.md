@@ -1,50 +1,82 @@
-# React + TypeScript + Vite
+# Hacker News Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Это приложение — клон Hacker News, разработанный с использованием React, TypeScript и Vite. Приложение позволяет просматривать последние 100 новостей, а также читать комментарии к каждой новости.
 
-Currently, two official plugins are available:
+## Установка и запуск
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Клонирование репозитория
 
-## Expanding the ESLint configuration
+Сначала клонируйте репозиторий:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+```bash
+git clone https://github.com/ваш_аккаунт/hacker-news-clone.git
+cd hacker-news-clone
+```
+### 2. Установка зависимостей
+Запустите команду ниже для установки всех зависимостей:
 
-- Configure the top-level `parserOptions` property like this:
+```bash
+npm install
+```
+### 3. Настройка переменных окружения
+Создайте файл .env в корне проекта и добавьте следующую строку:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```plaintext
+VITE_HACKERNEWS_API_URL=https://hacker-news.firebaseio.com/v0/
+```
+**Замените ваш_ключ_API на ваш настоящий API ключ.**
+Использование переменных окружения в коде
+Вы можете получить доступ к этим переменным в вашем коде следующим образом:
+
+```javascript
+const VITE_HACKERNEWS_API_URL = import.meta.env.VITE_HACKERNEWS_API_URL;
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 4. Запуск приложения
+После того как вы установили зависимости и настроили переменные окружения, запустите приложение:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm run dev
+Приложение будет доступно по адресу http://localhost:5173
 ```
+## Основные функции
+##Главная страница
+Отображает последние 100 новостей в виде списка, отсортированного по дате, с самыми свежими новостями сверху.
+### Каждая новость содержит:
+Название
+Рейтинг
+Ник автора
+Дата публикации
+По клику на новость происходит переход на страницу новости.
+На странице есть кнопка для принудительного обновления списка новостей.
+## Страница новости
+### Содержит:
+Ссылку на новость
+Заголовок новости
+Дату
+Автора
+Счетчик количества комментариев
+Список комментариев в виде дерева
+Корневые комментарии загружаются сразу при входе на страницу, вложенные подгружаются по клику на корневой комментарий.
+На странице есть кнопка для принудительного обновления списка комментариев.
+Также есть кнопка для возврата к списку новостей.
+## Технические требования
+Приложение разработано с использованием React и Redux
+Использован официальный API Hacker News. Вызовы Hacker News API и обработка данных от него производятся напрямую на фронтенде.
+Роутинг выполнен с использованием React Router v6.
+Пакетный менеджер npm.
+
+### Дополнительная информация
+Если у вас есть вопросы или предложения, не стесняйтесь создавать issue в репозитории.
+
+## Контакты
+**Мой телеграм**: - [Telegram](https://t.me/donpabloooo)
+**Ссылка на проект**: [GitHub](https://github.com/pablitodon/coincap)
+
+### Построено с
+
+- [![React][React.js]][React-url] - Библиотека для создания пользовательских интерфейсов
+- [![HTML][HTML]][HTML-url] - Структура веб-страниц
+- [![CSS][CSS]][CSS-url] - Стилизация интерфейса
+- [![JavaScript][JavaScript]][JavaScript-url] - Основной язык программирования приложения
+- [![TypeScript][TypeScript]][TypeScript-url] - Надстройка над JavaScript для типов
